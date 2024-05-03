@@ -43,6 +43,7 @@ def quitThis():
 def is_collided_with(a, b):
     return abs(a.xcor() - b.xcor()) < 10 and abs(a.ycor() - b.ycor()) < 10
 
+# TODO make faster with 1 second loop
 def follow_runner():
     follow.setheading(follow.towards(run))
     follow.forward(min(follow.distance(run), 10))
