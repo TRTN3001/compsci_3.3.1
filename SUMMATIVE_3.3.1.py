@@ -86,14 +86,17 @@ def wrong_answer():
 label = Label(root, text="", font="TkFixedFont", padx=5, pady=5)
 entry = Entry(root, textvariable=reply, font="TkFixedFont")
 submit_button = Button(root, text="Submit", command=submit, font="TkFixedFont")
-
+spacing = Label(root, pady=25)
+funlabel = Label(root, text="This is fun. Isn't it nice?", font="TkFixedFont")
+funbar = ttk.Progressbar(root, mode="indeterminate", length=200)
 # Packing items (displays on screen)
-to_pack = [label, entry, submit_button]
+to_pack = [label, entry, submit_button, spacing, funlabel, funbar]
 for item in to_pack:
     item.pack()
 
 # Start functions
 roll()
+funbar.step(250)
 
 # Mainloops
 # NOTE: DO NOT PUT ANY CODE AFTER THIS
