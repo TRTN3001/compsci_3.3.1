@@ -4,6 +4,25 @@ from tkinter import *
 from tkinter import ttk
 import random
 
+turtle.red = turtle.Turtle("turtle")
+turtle.red.color("red")
+turtle.red.penup()
+turtle.red.setposition(-300,50)
+
+turtle.blue = turtle.Turtle("turtle")
+turtle.blue.color("blue")
+turtle.blue.penup()
+turtle.blue.setposition(-300,-50)
+
+turtle.finish = turtle.Turtle()
+turtle.finish.color("black")
+turtle.finish.penup()
+turtle.finish.setposition(300,300)
+turtle.finish.pendown()
+turtle.finish.pensize(10)
+turtle.finish.right(90)
+turtle.finish.forward(600)
+
 # Button config options if OS is Mac
 import platform
 if platform.system() == "Darwin":
