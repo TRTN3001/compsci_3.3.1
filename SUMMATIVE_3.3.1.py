@@ -13,6 +13,7 @@ if platform.system() == "Darwin":
 # TODO make hangman for english as well as other minigames
 # TODO make a turtle race
 
+canvas = turtle.Screen()
 
 # Tkinter
 root = Tk()
@@ -34,23 +35,24 @@ panswer = ["(2x+1)(x+1)", "(x−2)(x−3)", "(3x+1)(x+1)", "(x+3)(x+3)"]
 def roll():
     global question, pquestion
     question = random.randint(1,4)
-    label.config(text="YOUR CATEGORY: POLYNOMIALS!")
-    root.after(1000,label.config(text="SOLVE THIS POLYNOMIAL: " + str(pquestion[(question - 1)])))
+    label.config(text="SOLVE THIS POLYNOMIAL: " + str(pquestion[(question - 1)]))
 
 def submit():
     global question, panswer, reply
     if str(reply.get()) == str(panswer[(question - 1)]):
-        label.config(text="CORRECT! NEXT QUESTION IN 3 SECONDS...")
+        label.config(text="CORRECT! NEXT QUESTION IN 3 SECONDS")
         root.after(3000, roll)
     else:
-        label.config(text="INCORRECT! NEXT QUESTION IN 3 SECONDS...")
-        root.destroy()
+        label.config(text="INCORRECT! DELETING IN 3 SECONDS")
+        root.after(3000, quit)
 
-
+def quit():
+    root.destroy()
+    canvas.bye()
 # Objects
-label = Label(root, text="SOLVE A PROBLEM")
+label = Label(root, text="")
 entry = Entry(root, textvariable=reply)
-submit_button = Button(root, text="Start", command=submit)
+submit_button = Button(root, text="Submit", command=submit)
 
 # Packing items (displays on screen)
 to_pack = [label, entry, submit_button]
@@ -60,7 +62,6 @@ for item in to_pack:
 # Start functions
 roll()
 
-turtle.done()
 # Mainloops
 # NOTE: DO NOT PUT ANY CODE AFTER THIS
 root.mainloop()
