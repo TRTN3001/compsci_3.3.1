@@ -4,16 +4,25 @@ from tkinter import *
 from tkinter import ttk
 import random
 
+# Button config options if OS is Mac
+import platform
+if platform.system() == "Darwin":
+    from tkmacosx import Button # type: ignore
+
+# NOTE Turtle
+# Red Turtle
 turtle.red = turtle.Turtle("turtle")
 turtle.red.color("red")
 turtle.red.penup()
 turtle.red.setposition(-300,50)
 
+# Blue Turtle
 turtle.blue = turtle.Turtle("turtle")
 turtle.blue.color("blue")
 turtle.blue.penup()
 turtle.blue.setposition(-300,-50)
 
+# Finish Turtle
 turtle.finish = turtle.Turtle()
 turtle.finish.color("black")
 turtle.finish.penup()
@@ -23,18 +32,12 @@ turtle.finish.pensize(10)
 turtle.finish.right(90)
 turtle.finish.forward(600)
 
-# Button config options if OS is Mac
-import platform
-if platform.system() == "Darwin":
-    from tkmacosx import Button # type: ignore
-
-# TODO add math "advertisement" where when you die, it makes you solve a polynomial
 # TODO make hangman for english as well as other minigames
 # TODO make a turtle race
 
 canvas = turtle.Screen()
 
-# Tkinter
+# NOTE Tkinter
 root = Tk()
 root.title("SUMMATIVE 3.3.1")
 root.geometry("275x200")
@@ -47,8 +50,8 @@ root.protocol("WM_DELETE_WINDOW", disable_event)
 # Variables
 reply = StringVar()
 question = random.randint(1,4)
-pquestion = ["2x\u00b2+3x+1", "x\u00b2−5x+6", "3x\u00b2+4x+1", "x\u00b2+6x+9"]
-panswer = ["(2x+1)(x+1)", "(x−2)(x−3)", "(3x+1)(x+1)", "(x+3)(x+3)"]
+pquestion = ["2x\u00b2+3x+1", "x\u00b2-5x+6", "3x\u00b2+4x+1", "x\u00b2+6x+9", "x\u00b2-9", "4x\u00b2-4x-3", "x\u00b2+5x+6", "2x\u00b2+7x+3", "3x\u00b2-5x-2", "2x\u00b2-9x+9"]
+panswer = ["(2x+1)(x+1)", "(x-2)(x-3)", "(3x+1)(x+1)", "(x+3)(x+3)", "(x-3)(x+3)", "(2x-3)(2x+1)", "(x+2)(x+3)", "(2x+1)(x+3)", "(3x+1)(x-2)", "(2x-3)(x-3)"]
 
 # Functions
 def roll():
@@ -63,11 +66,12 @@ def submit():
         root.after(3000, roll)
     else:
         label.config(text="INCORRECT! DELETING IN 3 SECONDS")
-        root.after(3000, quit)
+        root.after(3000, wrong_answer)
 
-def quit():
+def wrong_answer():
     root.destroy()
-    canvas.bye()
+    canvas.bye()  # TODO Replace with wrong answer code for turtle
+
 # Objects
 label = Label(root, text="")
 entry = Entry(root, textvariable=reply)
