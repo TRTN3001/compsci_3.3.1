@@ -10,6 +10,9 @@ if platform.system() == "Darwin":
     from tkmacosx import Button # type: ignore
 
 # NOTE Turtle
+
+canvas = turtle.Screen()
+
 # Red Turtle
 turtle.red = turtle.Turtle("turtle")
 turtle.red.color("red")
@@ -22,24 +25,30 @@ turtle.blue.color("blue")
 turtle.blue.penup()
 turtle.blue.setposition(-300,-50)
 
-# Finish Turtle
+# Finish Line
 turtle.finish = turtle.Turtle()
 turtle.finish.color("black")
 turtle.finish.penup()
-turtle.finish.setposition(300,300)
-turtle.finish.pendown()
-turtle.finish.pensize(10)
-turtle.finish.right(90)
-turtle.finish.forward(600)
+
+# Functions
+def draw_finish():
+    turtle.finish.setposition(300,300)
+    turtle.finish.pendown()
+    turtle.finish.pensize(10)
+    turtle.finish.right(90)
+    turtle.finish.forward(600)
+
+# Start functions
+draw_finish()
+
 
 # TODO make hangman for english as well as other minigames
 # TODO make a turtle race
 
-canvas = turtle.Screen()
 
 # NOTE Tkinter
 root = Tk()
-root.title("SUMMATIVE 3.3.1")
+root.title("SUMMATIVE 3.3.1")  # TODO change title to something more fitting
 root.geometry("275x200")
 
 # Ensures user can't close window
@@ -48,6 +57,7 @@ def disable_event():
 root.protocol("WM_DELETE_WINDOW", disable_event)
 
 # Variables
+# NOTE "\u00b" is the unicode replacement character for a squared symbol
 reply = StringVar()
 question = random.randint(1,4)
 pquestion = ["2x\u00b2+3x+1", "x\u00b2-5x+6", "3x\u00b2+4x+1", "x\u00b2+6x+9", "x\u00b2-9", "4x\u00b2-4x-3", "x\u00b2+5x+6", "2x\u00b2+7x+3", "3x\u00b2-5x-2", "2x\u00b2-9x+9"]
@@ -73,9 +83,9 @@ def wrong_answer():
     canvas.bye()  # TODO Replace with wrong answer code for turtle
 
 # Objects
-label = Label(root, text="")
-entry = Entry(root, textvariable=reply)
-submit_button = Button(root, text="Submit", command=submit)
+label = Label(root, text="", font="TkFixedFont", padx=5, pady=5)
+entry = Entry(root, textvariable=reply, font="TkFixedFont")
+submit_button = Button(root, text="Submit", command=submit, font="TkFixedFont")
 
 # Packing items (displays on screen)
 to_pack = [label, entry, submit_button]
