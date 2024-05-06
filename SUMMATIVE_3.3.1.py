@@ -96,7 +96,7 @@ for item in to_pack:
 
 # Start functions
 roll()
-funbar.step(250)
+funbar.step(100)
 
 # Mainloops
 # NOTE: DO NOT PUT ANY CODE AFTER THIS
