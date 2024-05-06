@@ -7,7 +7,7 @@ import random
 # Button config options if OS is Mac
 import platform
 if platform.system() == "Darwin":
-    from tkmacosx import Button
+    from tkmacosx import Button # type: ignore
 
 # TODO add math "advertisement" where when you die, it makes you solve a polynomial
 # TODO make hangman for english as well as other minigames
