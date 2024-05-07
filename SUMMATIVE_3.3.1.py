@@ -63,29 +63,28 @@ root.protocol("WM_DELETE_WINDOW", disable_event)
 
 # Variables
 # NOTE "\u00b" is the unicode replacement character for a squared symbol
-reply = StringVar()
-question = 1
+userInput = StringVar(root)
 pquestion = ["2x\u00b2+3x+1", "x\u00b2-5x+6", "3x\u00b2+4x+1", "x\u00b2+6x+9", "x\u00b2-9", "4x\u00b2-4x-3", "x\u00b2+5x+6", "2x\u00b2+7x+3", "3x\u00b2-5x-2", "2x\u00b2-9x+9"]
 panswer = ["(2x+1)(x+1)", "(x-2)(x-3)", "(3x+1)(x+1)", "(x+3)(x+3)", "(x-3)(x+3)", "(2x-3)(2x+1)", "(x+2)(x+3)", "(2x+1)(x+3)", "(3x+1)(x-2)", "(2x-3)(x-3)"]
 
 # Functions
 def roll():
-    global question, pquestion
+    global question
     question = random.randint(1,10)
-    label.config(text="SOLVE THIS POLYNOMIAL: " + str(pquestion[(question - 1)]))
+    label.config(text="SOLVE THIS POLYNOMIAL: " + panswer[(question - 1)] + pquestion[(question - 1)])
     entry.delete(0, 'end')
 
 def submit():
-    global question, panswer, reply,bluewin,redwin
-    if str(reply.get()) == str(panswer[(question - 1)]):
-        turtle.red.forward(50)
+    global redwin, bluewin
+    if userInput.get() == panswer[(question - 1)]:
         label.config(text="CORRECT! YOU MOVE FORWARD!")
+        turtle.red.forward(50)
         redwin += 1
         if redwin == 12:
             print("red wins")
     else:
-        turtle.blue.forward(50)
         label.config(text="INCORRECT! BLUE MOVES FORWARD!")
+        turtle.blue.forward(50)
         bluewin += 1
         if bluewin == 12:
             print("blue wins")
@@ -97,7 +96,7 @@ def wrong_answer():
 
 # Objects
 label = Label(root, text="", font="TkFixedFont", padx=5, pady=5)
-entry = Entry(root, textvariable=reply, font="TkFixedFont")
+entry = Entry(root, textvariable=userInput, font="TkFixedFont")
 submit_button = Button(root, text="Submit", command=submit, font="TkFixedFont")
 spacing = Label(root, pady=25)
 funlabel = Label(root, text="This is fun. Isn't it nice?", font="TkFixedFont")
