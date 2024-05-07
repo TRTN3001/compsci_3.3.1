@@ -72,9 +72,11 @@ def roll():
 def submit():
     global question, panswer, reply
     if str(reply.get()) == str(panswer[(question - 1)]):
+        turtle.red.forward(40)
         label.config(text="CORRECT! NEXT QUESTION IN 3 SECONDS")
         root.after(3000, roll)
     else:
+        turtle.blue.forward(40)
         label.config(text="INCORRECT! DELETING IN 3 SECONDS")
         root.after(3000, wrong_answer)
 
