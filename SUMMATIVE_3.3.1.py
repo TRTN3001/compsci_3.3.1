@@ -3,6 +3,9 @@ import tkinter
 from tkinter import *
 from tkinter import ttk
 import random
+redwin = 0
+bluewin = 0
+
 
 # Button config options if OS is Mac
 import platform
@@ -73,13 +76,19 @@ def roll():
     entry.delete(0, 'end')
 
 def submit():
-    global question, panswer, reply
+    global question, panswer, reply,bluewin,redwin
     if str(reply.get()) == str(panswer[(question - 1)]):
-        turtle.red.forward(40)
+        turtle.red.forward(50)
         label.config(text="CORRECT! YOU MOVE FORWARD!")
+        redwin += 1
+        if redwin == 12:
+            print("red wins")
     else:
-        turtle.blue.forward(40)
+        turtle.blue.forward(50)
         label.config(text="INCORRECT! BLUE MOVES FORWARD!")
+        bluewin += 1
+        if bluewin == 12:
+            print("blue wins")
     root.after(3000, roll)
 
 def wrong_answer():
