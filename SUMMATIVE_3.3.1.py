@@ -51,34 +51,36 @@ root = Tk()
 root.title("SUMMATIVE 3.3.1")  # TODO change title to something more fitting
 root.geometry("275x200")
 
+"""
 # Ensures user can't close window
 def disable_event():
     pass
 root.protocol("WM_DELETE_WINDOW", disable_event)
+"""
 
 # Variables
 # NOTE "\u00b" is the unicode replacement character for a squared symbol
 reply = StringVar()
-question = random.randint(1,4)
+question = 1
 pquestion = ["2x\u00b2+3x+1", "x\u00b2-5x+6", "3x\u00b2+4x+1", "x\u00b2+6x+9", "x\u00b2-9", "4x\u00b2-4x-3", "x\u00b2+5x+6", "2x\u00b2+7x+3", "3x\u00b2-5x-2", "2x\u00b2-9x+9"]
 panswer = ["(2x+1)(x+1)", "(x-2)(x-3)", "(3x+1)(x+1)", "(x+3)(x+3)", "(x-3)(x+3)", "(2x-3)(2x+1)", "(x+2)(x+3)", "(2x+1)(x+3)", "(3x+1)(x-2)", "(2x-3)(x-3)"]
 
 # Functions
 def roll():
     global question, pquestion
-    question = random.randint(1,4)
+    question = random.randint(1,10)
     label.config(text="SOLVE THIS POLYNOMIAL: " + str(pquestion[(question - 1)]))
+    entry.delete(0, 'end')
 
 def submit():
     global question, panswer, reply
     if str(reply.get()) == str(panswer[(question - 1)]):
         turtle.red.forward(40)
-        label.config(text="CORRECT! NEXT QUESTION IN 3 SECONDS")
-        root.after(3000, roll)
+        label.config(text="CORRECT! YOU MOVE FORWARD!")
     else:
         turtle.blue.forward(40)
-        label.config(text="INCORRECT! DELETING IN 3 SECONDS")
-        root.after(3000, wrong_answer)
+        label.config(text="INCORRECT! BLUE MOVES FORWARD!")
+    root.after(3000, roll)
 
 def wrong_answer():
     root.destroy()
