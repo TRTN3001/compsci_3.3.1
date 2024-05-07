@@ -3,9 +3,6 @@ import tkinter
 from tkinter import *
 from tkinter import ttk
 import random
-redwin = 0
-bluewin = 0
-
 
 # Button config options if OS is Mac
 import platform
@@ -14,6 +11,8 @@ if platform.system() == "Darwin":
     
 
 # NOTE Turtle
+redwin = 0
+bluewin = 0
 
 canvas = turtle.Screen()
 
