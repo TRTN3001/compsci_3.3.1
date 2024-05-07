@@ -11,6 +11,7 @@ bluewin = 0
 import platform
 if platform.system() == "Darwin":
     from tkmacosx import Button # type: ignore
+    
 
 # NOTE Turtle
 
@@ -71,7 +72,7 @@ panswer = ["(2x+1)(x+1)", "(x-2)(x-3)", "(3x+1)(x+1)", "(x+3)(x+3)", "(x-3)(x+3)
 def roll():
     global question
     question = random.randint(1,10)
-    label.config(text="SOLVE THIS POLYNOMIAL: " + panswer[(question - 1)] + pquestion[(question - 1)])
+    label.config(text="SOLVE THIS POLYNOMIAL: " + pquestion[(question - 1)])
     entry.delete(0, 'end')
 
 def submit():
@@ -98,17 +99,13 @@ def wrong_answer():
 label = Label(root, text="", font="TkFixedFont", padx=5, pady=5)
 entry = Entry(root, textvariable=userInput, font="TkFixedFont")
 submit_button = Button(root, text="Submit", command=submit, font="TkFixedFont")
-spacing = Label(root, pady=25)
-funlabel = Label(root, text="This is fun. Isn't it nice?", font="TkFixedFont")
-funbar = ttk.Progressbar(root, mode="indeterminate", length=200)
 # Packing items (displays on screen)
-to_pack = [label, entry, submit_button, spacing, funlabel, funbar]
+to_pack = [label, entry, submit_button]
 for item in to_pack:
     item.pack()
 
 # Start functions
 roll()
-funbar.step(100)
 
 # Mainloops
 # NOTE: DO NOT PUT ANY CODE AFTER THIS
