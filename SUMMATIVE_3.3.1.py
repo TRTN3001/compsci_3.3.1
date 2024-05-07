@@ -3,6 +3,7 @@ import tkinter
 from tkinter import *
 from tkinter import ttk
 import random
+from PIL import Image, ImageTk
 
 # Button config options if OS is Mac
 import platform
