@@ -20,13 +20,13 @@ canvas = turtle.Screen()
 turtle.red = turtle.Turtle("turtle")
 turtle.red.color("red")
 turtle.red.penup()
-turtle.red.setposition(-300,50)
+turtle.red.setposition(-300, 50)
 
 # Blue Turtle
 turtle.blue = turtle.Turtle("turtle")
 turtle.blue.color("blue")
 turtle.blue.penup()
-turtle.blue.setposition(-300,-50)
+turtle.blue.setposition(-300, -50)
 
 # Finish Line
 turtle.finish = turtle.Turtle()
@@ -35,7 +35,7 @@ turtle.finish.penup()
 
 # Functions
 def draw_finish():
-    turtle.finish.setposition(300,300)
+    turtle.finish.setposition(300, 300)
     turtle.finish.pendown()
     turtle.finish.pensize(10)
     turtle.finish.right(90)
@@ -54,12 +54,10 @@ root = Tk()
 root.title("SUMMATIVE 3.3.1")  # TODO change title to something more fitting
 root.geometry("275x200")
 
-"""
 # Ensures user can't close window
 def disable_event():
     pass
 root.protocol("WM_DELETE_WINDOW", disable_event)
-"""
 
 # Variables
 # NOTE "\u00b" is the unicode replacement character for a squared symbol
@@ -87,12 +85,25 @@ def submit():
     checkWin()
 
 def checkWin():
-    if bluewin == 12:
-        print("blue wins")
-    if redwin == 10:
-        print("red wins")
+    if bluewin == 12 or redwin == 10:
+        if bluewin == 12:
+            label.config(text="BLUE WINS! GAME STARTS IN 5 SECONDS")
+        if redwin == 10:
+            label.config(text="RED WINS! GAME STARTS IN 5 SECONDS")
+        root.protocol("WM_DELETE_WINDOW", close)
+        root.after(5000, playAgain)
     else:
         root.after(3000, roll)
+
+def playAgain():
+    global bluewin, redwin
+    bluewin = 0
+    redwin = 0
+    turtle.blue.setposition(-300, -50)
+    turtle.red.setposition(-300, 50)
+    submit_button.DISABLED = False
+    root.protocol("WM_DELETE_WINDOW", disable_event)
+    roll()
 
 def close():
     root.destroy()
