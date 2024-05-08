@@ -78,16 +78,16 @@ def submit():
     global redwin, bluewin
     if userInput.get() == panswer[(question - 1)]:
         label.config(text="CORRECT! YOU MOVE FORWARD!")
-        turtle.red.forward(50)
-        redwin += 1
-        if redwin == 12:
-            print("red wins")
-    else:
-        label.config(text="INCORRECT! BLUE MOVES FORWARD!")
         turtle.blue.forward(50)
         bluewin += 1
         if bluewin == 12:
             print("blue wins")
+    else:
+        label.config(text="INCORRECT! RED MOVES FORWARD!")
+        turtle.red.forward(50)
+        redwin += 1
+        if redwin == 12:
+            print("red wins")
     root.after(3000, roll)
 
 def wrong_answer():
