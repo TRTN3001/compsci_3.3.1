@@ -84,9 +84,9 @@ def submit():
             print("blue wins")
     else:
         label.config(text="INCORRECT! RED MOVES FORWARD!")
-        turtle.red.forward(50)
+        turtle.red.forward(60)
         redwin += 1
-        if redwin == 12:
+        if redwin == 10:
             print("red wins")
     root.after(3000, roll)
 
