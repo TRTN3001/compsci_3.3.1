@@ -80,19 +80,23 @@ def submit():
         label.config(text="CORRECT! YOU MOVE FORWARD!")
         turtle.blue.forward(50)
         bluewin += 1
-        if bluewin == 12:
-            print("blue wins")
     else:
         label.config(text="INCORRECT! RED MOVES FORWARD!")
         turtle.red.forward(60)
         redwin += 1
-        if redwin == 10:
-            print("red wins")
-    root.after(3000, roll)
+    checkWin()
 
-def wrong_answer():
+def checkWin():
+    if bluewin == 12:
+        print("blue wins")
+    if redwin == 10:
+        print("red wins")
+    else:
+        root.after(3000, roll)
+
+def close():
     root.destroy()
-    canvas.bye()  # TODO Replace with wrong answer code for turtle
+    canvas.bye()
 
 # Objects
 label = Label(root, text="", font="TkFixedFont", padx=5, pady=5)
