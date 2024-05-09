@@ -15,6 +15,7 @@ redwin = 0
 bluewin = 0
 
 canvas = turtle.Screen()
+turtle.title("TURTLE TRAINER 2000")
 
 # Red Turtle
 turtle.red = turtle.Turtle("turtle")
@@ -66,21 +67,21 @@ def roll():
     global category, question, r1
     category = random.randint(1, 5)
     if category == 1:
-        question = random.randint(1,10)
+        question = random.randint(1, 10)
         label.config(text="SOLVE THIS POLYNOMIAL: " + pquestion[(question - 1)])
     elif category == 2:
-        q1 = random.randint(1,1000)
-        q2 = random.randint(1, 1000)
+        q1 = random.randint(-100, 1000)
+        q2 = random.randint(-100, 1000)
         r1 = q1 + q2
         label.config(text="WHAT IS " + str(q1) + (" + ") + str(q2) + "?")
     elif category == 3:
-        q1 = random.randint(1, 1000)
-        q2 = random.randint(1, 1000)
+        q1 = random.randint(-100, 1000)
+        q2 = random.randint(-100, 1000)
         r1 = q1 - q2
         label.config(text="WHAT IS " + str(q1) + (" - ") + str(q2) + "?")
     elif category == 4:
-        q1 = random.randint(1, 20)
-        q2 = random.randint(1, 20)
+        q1 = random.randint(-10, 20)
+        q2 = random.randint(-10, 20)
         r1 = q1 * q2
         label.config(text="WHAT IS " + str(q1) + (" X ") + str(q2) + "?")
     elif category == 5:
@@ -142,8 +143,16 @@ def close():
 label = Label(root, text="", font="TkFixedFont", padx=5, pady=5)
 entry = Entry(root, textvariable=userInput, font="TkFixedFont")
 submit_button = Button(root, text="Submit", command=submit, font="TkFixedFont")
+turtle_art = Label(root, text="""
+               __  
+    .,-;-;-,. /'_\ 
+  _/_/_/_|_\_\) /  
+'-<_><_><_><_>=/\  
+  `/_/====/_/-'\_\ 
+   ""     ""    "" 
+        """, font="TkFixedFont", fg="#55FF55")
 # Packing items (displays on screen)
-to_pack = [label, entry, submit_button]
+to_pack = [label, entry, submit_button, turtle_art]
 for item in to_pack:
     item.pack()
 
