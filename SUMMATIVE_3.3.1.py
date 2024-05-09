@@ -68,17 +68,32 @@ panswer = ["(2x+1)(x+1)", "(x-2)(x-3)", "(3x+1)(x+1)", "(x+3)(x+3)", "(x-3)(x+3)
 # Functions
 def roll():
     global category, question, r1
-    category = random.randint(1,2)
+    category = random.randint(1, 5)
     if category == 1:
         question = random.randint(1,10)
         label.config(text="SOLVE THIS POLYNOMIAL: " + pquestion[(question - 1)])
-        entry.delete(0, 'end')
     elif category == 2:
-        q1 = random.randint(1,20)
-        q2 = random.randint(1,20)
+        q1 = random.randint(1,1000)
+        q2 = random.randint(1, 1000)
+        r1 = q1 + q2
+        label.config(text="WHAT IS " + str(q1) + (" + ") + str(q2) + "?")
+    elif category == 3:
+        q1 = random.randint(1, 1000)
+        q2 = random.randint(1, 1000)
+        r1 = q1 - q2
+        label.config(text="WHAT IS " + str(q1) + (" - ") + str(q2) + "?")
+    elif category == 4:
+        q1 = random.randint(1, 20)
+        q2 = random.randint(1, 20)
         r1 = q1 * q2
-        label.config(text="WHAT IS " + str(q1) + (" X ") + str(q2) + "?")
-        entry.delete(0, 'end')
+        label.config(text="WHAT IS " + str(q1) + (" x ") + str(q2) + "?")
+    elif category == 5:
+        q1 = random.randint(1, 30)
+        q2 = random.randint(1, 30)
+        r1 = q1 * q2
+        label.config(text="WHAT IS " + str(r1) + (" ÷ ") + str(q2) + "?")
+        r1 = q1
+    entry.delete(0, 'end')
 
 def submit():
     global redwin, bluewin
@@ -91,8 +106,8 @@ def submit():
             label.config(text="INCORRECT! RED MOVES FORWARD!")
             turtle.red.forward(60)
             redwin += 1
-    elif category == 2:
-        if int(userInput.get()) == int(r1):
+    elif category == 2 or 3 or 4 or 5:
+        if userInput.get() == str(r1):
             label.config(text="CORRECT! YOU MOVE FORWARD!")
             turtle.blue.forward(50)
             bluewin += 1
