@@ -45,13 +45,9 @@ def draw_finish():
 draw_finish()
 
 
-# TODO make hangman for english as well as other minigames
-# TODO make a turtle race
-
-
 # NOTE Tkinter
 root = Tk()
-root.title("SUMMATIVE 3.3.1")  # TODO change title to something more fitting
+root.title("TURTLE TRAINER 2000")
 root.geometry("275x200")
 
 # Ensures user can't close window
@@ -86,18 +82,18 @@ def roll():
         q1 = random.randint(1, 20)
         q2 = random.randint(1, 20)
         r1 = q1 * q2
-        label.config(text="WHAT IS " + str(q1) + (" x ") + str(q2) + "?")
+        label.config(text="WHAT IS " + str(q1) + (" X ") + str(q2) + "?")
     elif category == 5:
         q1 = random.randint(1, 30)
         q2 = random.randint(1, 30)
         r1 = q1 * q2
-        label.config(text="WHAT IS " + str(r1) + (" ÷ ") + str(q2) + "?")
+        label.config(text="WHAT IS " + str(r1) + (" / ") + str(q2) + "?")
         r1 = q1
     entry.delete(0, 'end')
 
 def submit():
     global redwin, bluewin
-    if category == 1:
+    if category == 1:  # If category is polynomials:
         if userInput.get() == panswer[(question - 1)]:
             label.config(text="CORRECT! YOU MOVE FORWARD!")
             turtle.blue.forward(50)
@@ -106,7 +102,7 @@ def submit():
             label.config(text="INCORRECT! RED MOVES FORWARD!")
             turtle.red.forward(60)
             redwin += 1
-    elif category == 2 or 3 or 4 or 5:
+    elif category == 2 or 3 or 4 or 5:  # If category is addition, subtraction, multiplication, or division:
         if userInput.get() == str(r1):
             label.config(text="CORRECT! YOU MOVE FORWARD!")
             turtle.blue.forward(50)
@@ -118,7 +114,7 @@ def submit():
     checkWin()
 
 def checkWin():
-    if bluewin == 12 or redwin == 10:
+    if bluewin == 12 or redwin == 10:  # Check if turtle reached the end
         if bluewin == 12:
             label.config(text="BLUE WINS! GAME STARTS IN 5 SECONDS")
         if redwin == 10:
