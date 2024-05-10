@@ -152,6 +152,7 @@ turtle_art = Label(root, text="""
   `/_/====/_/-'\_\ 
    ""     ""    "" 
         """, font="TkFixedFont", fg="#55FF55", bg="#323232")
+
 # Packing items (displays on screen)
 to_pack = [label, entry, submit_button, turtle_art]
 for item in to_pack:
