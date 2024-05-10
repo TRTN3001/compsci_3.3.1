@@ -91,28 +91,33 @@ def roll():
         r1 = q1 * q2
         label.config(text="WHAT IS " + str(r1) + (" / ") + str(q2) + "?")
         r1 = q1
-    entry.delete(0, 'end')
+    turtle_text.config(text='"I believe in you! You got this!"')
 
 def submit():
     global redwin, bluewin
     if category == 1:  # If category is polynomials:
         if userInput.get() == panswer[(question - 1)]:
             label.config(text="CORRECT! YOU MOVE FORWARD!")
+            turtle_text.config(text='"Great job! Keep it up :)"')
             turtle.blue.forward(50)
             bluewin += 1
         else:
             label.config(text="INCORRECT! RED MOVES FORWARD!")
+            turtle_text.config(text='"Aw, man! The answer was ' + panswer[(question - 1)] + '"')
             turtle.red.forward(60)
             redwin += 1
     elif category == 2 or 3 or 4 or 5:  # If category is addition, subtraction, multiplication, or division:
         if userInput.get() == str(r1):
             label.config(text="CORRECT! YOU MOVE FORWARD!")
+            turtle_text.config(text='"Great job! Keep it up :)"')
             turtle.blue.forward(50)
             bluewin += 1
         else:
             label.config(text="INCORRECT! RED MOVES FORWARD!")
+            turtle_text.config(text='"Aw, man! The answer was ' + str(r1) + '"')
             turtle.red.forward(60)
             redwin += 1
+    entry.delete(0, 'end')
     checkWin()
 
 def checkWin():
@@ -121,6 +126,7 @@ def checkWin():
             label.config(text="BLUE WINS! GAME STARTS IN 5 SECONDS")
         if redwin == 10:
             label.config(text="RED WINS! GAME STARTS IN 5 SECONDS")
+        turtle_text.config(text='"You can leave, or keep training!"')
         root.protocol("WM_DELETE_WINDOW", close)
         root.after(5000, playAgain)
     else:
@@ -144,17 +150,17 @@ def close():
 label = Label(root, text="", font="TkFixedFont", fg="#FFFFFF", bg="#323232", padx=5, pady=5)
 entry = Entry(root, textvariable=userInput, font="TkFixedFont", fg="#FFFFFF", bg="#1E1E1E")
 submit_button = Button(root, text="Submit", command=submit, font="TkFixedFont", fg="#000000", bg="#FFFFFF")
-turtle_art = Label(root, text="""
-               __  
+spacing = Label(root, pady=2.5)
+turtle_text = Label(root, text='"Welcome to the TURTLE TRAINER 3000!"', font="TkFixedFont", fg="#FFFFFF", bg="#323232")
+turtle_art = Label(root, text="""               __  
     .,-;-;-,. /'_\ 
   _/_/_/_|_\_\) /  
 '-<_><_><_><_>=/\  
   `/_/====/_/-'\_\ 
-   ""     ""    "" 
-        """, font="TkFixedFont", fg="#55FF55", bg="#323232")
+   ""     ""    "" """, font="TkFixedFont", fg="#55FF55", bg="#323232")
 
 # Packing items (displays on screen)
-to_pack = [label, entry, submit_button, turtle_art]
+to_pack = [label, entry, submit_button, spacing, turtle_text, turtle_art]
 for item in to_pack:
     item.pack()
 
