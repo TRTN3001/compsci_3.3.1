@@ -150,7 +150,7 @@ def close():
 label = Label(root, text="", font="TkFixedFont", fg="#FFFFFF", bg="#323232", padx=5, pady=5)
 entry = Entry(root, textvariable=userInput, font="TkFixedFont", fg="#FFFFFF", bg="#1E1E1E")
 submit_button = Button(root, text="Submit", command=submit, font="TkFixedFont", fg="#000000", bg="#FFFFFF")
-spacing = Label(root, pady=2.5)
+spacing = Label(root, pady=2, fg="#55FF55", bg="#323232")
 turtle_text = Label(root, text='"Welcome to the TURTLE TRAINER 3000!"', font="TkFixedFont", fg="#FFFFFF", bg="#323232")
 turtle_art = Label(root, text="""               __  
     .,-;-;-,. /'_\ 
