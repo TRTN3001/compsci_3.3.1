@@ -62,7 +62,7 @@ root.protocol("WM_DELETE_WINDOW", disable_event)
 userInput = StringVar(root)
 pquestion = ["2x\u00b2+3x+1", "x\u00b2-5x+6", "3x\u00b2+4x+1", "x\u00b2+6x+9", "x\u00b2-9", "4x\u00b2-4x-3", "x\u00b2+5x+6", "2x\u00b2+7x+3", "3x\u00b2-5x-2", "2x\u00b2-9x+9"]
 panswer = ["(2x+1)(x+1)", "(x-2)(x-3)", "(3x+1)(x+1)", "(x+3)(x+3)", "(x-3)(x+3)", "(2x-3)(2x+1)", "(x+2)(x+3)", "(2x+1)(x+3)", "(3x+1)(x-2)", "(2x-3)(x-3)"]
-turtle_affirmation = ['"I believe in you! You got this!"', '"You think you can do it?"', '"This is it! You can do it!"', '"Just a few more! Push through!"', '"Would Mr. Larson be proud of you?"', '"Shell yeah! Keep on rocking!"', '"TRTN? More like TRTL."', 'ScubaFishy? More like ScubaTurtle."', '"Feel the Shellborne Suffering!"', '"idk, man, im just a turtle :P"']
+turtle_affirmation = ['"I believe in you! You got this!"', '"You think you can do it?"', '"This is it! You can do it!"', '"Just a few more! Push through!"', '"Would Mr. Larson be proud of you?"', '"Shell yeah! Keep on rocking!"', '"TRTN? More like TRTL."', '"ScubaFishy? More like ScubaTurtle."', '"Feel the Shellborne Suffering!"', '"idk, man, im just a turtle :P"']
 
 # Functions
 def roll():
