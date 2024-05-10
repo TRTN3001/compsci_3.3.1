@@ -15,7 +15,7 @@ redwin = 0
 bluewin = 0
 
 canvas = turtle.Screen()
-turtle.title("TURTLE TRAINER 2000")
+turtle.title("TURTLE TRAINER 3000")
 
 # Red Turtle
 turtle.red = turtle.Turtle("turtle")
@@ -48,7 +48,7 @@ draw_finish()
 
 # NOTE Tkinter
 root = Tk()
-root.title("TURTLE TRAINER 2000")
+root.title("TURTLE TRAINER 3000")
 root.geometry("275x200")
 
 # Ensures user can't close window
