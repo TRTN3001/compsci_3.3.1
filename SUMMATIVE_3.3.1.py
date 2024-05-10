@@ -123,9 +123,9 @@ def submit():
 def checkWin():
     if bluewin == 12 or redwin == 10:  # Check if turtle reached the end
         if bluewin == 12:
-            label.config(text="BLUE WINS! GAME STARTS IN 5 SECONDS")
+            label.config(text="BLUE WINS! GAME STARTS IN 10 SECONDS")
         if redwin == 10:
-            label.config(text="RED WINS! GAME STARTS IN 5 SECONDS")
+            label.config(text="RED WINS! GAME STARTS IN 10 SECONDS")
         turtle_text.config(text='"You can leave, or keep training!"')
         root.protocol("WM_DELETE_WINDOW", close)
         root.after(10000, playAgain)
