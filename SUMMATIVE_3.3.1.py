@@ -50,6 +50,7 @@ draw_finish()
 root = Tk()
 root.title("TURTLE TRAINER 3000")
 root.geometry("275x200")
+root.config(bg="#323232")
 
 # Ensures user can't close window
 def disable_event():
@@ -140,9 +141,9 @@ def close():
     canvas.bye()
 
 # Objects
-label = Label(root, text="", font="TkFixedFont", padx=5, pady=5)
-entry = Entry(root, textvariable=userInput, font="TkFixedFont")
-submit_button = Button(root, text="Submit", command=submit, font="TkFixedFont")
+label = Label(root, text="", font="TkFixedFont", fg="#FFFFFF", bg="#323232", padx=5, pady=5)
+entry = Entry(root, textvariable=userInput, font="TkFixedFont", fg="#FFFFFF", bg="#1E1E1E")
+submit_button = Button(root, text="Submit", command=submit, font="TkFixedFont", fg="#000000", bg="#FFFFFF")
 turtle_art = Label(root, text="""
                __  
     .,-;-;-,. /'_\ 
@@ -150,7 +151,7 @@ turtle_art = Label(root, text="""
 '-<_><_><_><_>=/\  
   `/_/====/_/-'\_\ 
    ""     ""    "" 
-        """, font="TkFixedFont", fg="#55FF55")
+        """, font="TkFixedFont", fg="#55FF55", bg="#323232")
 # Packing items (displays on screen)
 to_pack = [label, entry, submit_button, turtle_art]
 for item in to_pack:
