@@ -128,7 +128,7 @@ def checkWin():
             label.config(text="RED WINS! GAME STARTS IN 5 SECONDS")
         turtle_text.config(text='"You can leave, or keep training!"')
         root.protocol("WM_DELETE_WINDOW", close)
-        root.after(5000, playAgain)
+        root.after(10000, playAgain)
     else:
         root.after(3000, roll)
 
