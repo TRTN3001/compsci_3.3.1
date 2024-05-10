@@ -62,11 +62,13 @@ root.protocol("WM_DELETE_WINDOW", disable_event)
 userInput = StringVar(root)
 pquestion = ["2x\u00b2+3x+1", "x\u00b2-5x+6", "3x\u00b2+4x+1", "x\u00b2+6x+9", "x\u00b2-9", "4x\u00b2-4x-3", "x\u00b2+5x+6", "2x\u00b2+7x+3", "3x\u00b2-5x-2", "2x\u00b2-9x+9"]
 panswer = ["(2x+1)(x+1)", "(x-2)(x-3)", "(3x+1)(x+1)", "(x+3)(x+3)", "(x-3)(x+3)", "(2x-3)(2x+1)", "(x+2)(x+3)", "(2x+1)(x+3)", "(3x+1)(x-2)", "(2x-3)(x-3)"]
+turtle_affirmation = ['"I believe in you! You got this!"', '"You think you can do it?"', '"This is it! You can do it!"', '"Just a few more! Push through!"', '"Would Mr. Larson be proud of you?"', '"Shell yeah! Keep on rocking!"', '"TRTN? More like TRTL."', 'ScubaFishy? More like ScubaTurtle."', '"Feel the Shellborne Suffering!"', '"idk, man, im just a turtle :P"']
 
 # Functions
 def roll():
     global category, question, r1
     category = random.randint(1, 5)
+    turtle_num = random.randint(1, 10)
     if category == 1:
         question = random.randint(1, 10)
         label.config(text="SOLVE THIS POLYNOMIAL: " + pquestion[(question - 1)])
@@ -91,7 +93,7 @@ def roll():
         r1 = q1 * q2
         label.config(text="WHAT IS " + str(r1) + (" / ") + str(q2) + "?")
         r1 = q1
-    turtle_text.config(text='"I believe in you! You got this!"')
+    turtle_text.config(text=turtle_affirmation[(turtle_num - 1)])
 
 def submit():
     global redwin, bluewin
@@ -123,12 +125,13 @@ def submit():
 def checkWin():
     if bluewin == 12 or redwin == 10:  # Check if turtle reached the end
         if bluewin == 12:
-            label.config(text="BLUE WINS! GAME STARTS IN 10 SECONDS")
+            label.config(text="BLUE WINS! GAME STARTS IN 5 SECONDS")
         if redwin == 10:
-            label.config(text="RED WINS! GAME STARTS IN 10 SECONDS")
-        turtle_text.config(text='"You can leave, or keep training!"')
+            label.config(text="RED WINS! GAME STARTS IN 5 SECONDS")
+        turtle_text.config(text='"You can quit now, or keep training!"')
         root.protocol("WM_DELETE_WINDOW", close)
-        root.after(10000, playAgain)
+        submit_button.DISABLED = True
+        root.after(5000, playAgain)
     else:
         root.after(3000, roll)
 
