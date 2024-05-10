@@ -67,31 +67,37 @@ turtle_affirmation = ['"I believe in you! You got this!"', '"You think you can d
 # Functions
 def roll():
     global category, question, r1
-    category = random.randint(1, 5)
+    category = random.randint(1, 6)
     turtle_num = random.randint(1, 10)
-    if category == 1:
+    if category == 1:  # Polynomials
         question = random.randint(1, 10)
         label.config(text="SOLVE THIS POLYNOMIAL: " + pquestion[(question - 1)])
-    elif category == 2:
+    elif category == 2:  # Addition
         q1 = random.randint(-100, 1000)
         q2 = random.randint(-100, 1000)
         r1 = q1 + q2
         label.config(text="WHAT IS " + str(q1) + (" + ") + str(q2) + "?")
-    elif category == 3:
+    elif category == 3:  # Subtraction
         q1 = random.randint(-100, 1000)
         q2 = random.randint(-100, 1000)
         r1 = q1 - q2
         label.config(text="WHAT IS " + str(q1) + (" - ") + str(q2) + "?")
-    elif category == 4:
+    elif category == 4:  # Multiplication
         q1 = random.randint(-10, 20)
         q2 = random.randint(-10, 20)
         r1 = q1 * q2
         label.config(text="WHAT IS " + str(q1) + (" X ") + str(q2) + "?")
-    elif category == 5:
+    elif category == 5:  # Division
         q1 = random.randint(1, 30)
         q2 = random.randint(1, 30)
         r1 = q1 * q2
         label.config(text="WHAT IS " + str(r1) + (" / ") + str(q2) + "?")
+        r1 = q1
+    elif category == 6:  # Algebra
+        q1 = random.randint(1, 30)
+        q2 = random.randint(1, 30)
+        r1 = q1 * q2
+        label.config(text="SOLVE FOR X: " + str(r1) + ("x = ") + str(q2))
         r1 = q1
     turtle_text.config(text=turtle_affirmation[(turtle_num - 1)])
 
@@ -108,7 +114,7 @@ def submit():
             turtle_text.config(text='"Aw, man! The answer was ' + panswer[(question - 1)] + '"')
             turtle.red.forward(60)
             redwin += 1
-    elif category == 2 or 3 or 4 or 5:  # If category is addition, subtraction, multiplication, or division:
+    elif category == 2 or 3 or 4 or 5 or 6:  # If category is addition, subtraction, multiplication, or division:
         if userInput.get() == str(r1):
             label.config(text="CORRECT! YOU MOVE FORWARD!")
             turtle_text.config(text='"Great job! Keep it up :)"')
