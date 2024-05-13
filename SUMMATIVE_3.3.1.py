@@ -49,7 +49,7 @@ draw_finish()
 # NOTE Tkinter
 root = Tk()
 root.title("TURTLE TRAINER 3000")
-root.geometry("300x200")
+root.geometry("325x200")
 root.config(bg="#323232")
 
 # Ensures user can't close window
